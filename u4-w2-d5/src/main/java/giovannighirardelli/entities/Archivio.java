@@ -30,7 +30,7 @@ public class Archivio {
             System.out.println("Libro rimosso");
         } else if (str.equals("Rivista")) {
             archivioRiv.removeIf(e -> e.getCodiceISBN() == isbn);
-            System.out.println("Libro rimosso");
+            System.out.println("Rivista rimossa");
         } else System.out.println("Non hai rimosso nulla...");
     }
 
@@ -39,7 +39,7 @@ public class Archivio {
             List<Catalogo> cercaLibro = archivioLibri.stream().filter(libro -> libro.getCodiceISBN() == isbn).toList();
             System.out.println("Questo è il libro che stavi cercando " + cercaLibro);
         } else if (str.equals("Rivista")) {
-            List<Catalogo> cercaRivista = archivioRiv.stream().filter(libro -> libro.getCodiceISBN() == isbn).toList();
+            List<Catalogo> cercaRivista = archivioRiv.stream().filter(rivista -> rivista.getCodiceISBN() == isbn).toList();
             System.out.println("Questa è la rivista che stavi cercando " + cercaRivista);
 
         } else System.out.println("Non hai trovato nulla...");
@@ -50,7 +50,7 @@ public class Archivio {
             List<Catalogo> cercaLibro = archivioLibri.stream().filter(libro -> libro.getAnnoPubbl() == anno).toList();
             System.out.println("Questo è il libro che stavi cercando " + cercaLibro);
         } else if (str.equals("Rivista")) {
-            List<Catalogo> cercaRivista = archivioRiv.stream().filter(libro -> libro.getAnnoPubbl() == anno).toList();
+            List<Catalogo> cercaRivista = archivioRiv.stream().filter(rivista -> rivista.getAnnoPubbl() == anno).toList();
             System.out.println("Questa è la rivista che stavi cercando " + cercaRivista);
 
         } else System.out.println("Non hai trovato nulla...");
@@ -60,9 +60,7 @@ public class Archivio {
         if (str.equals("Libro")) {
             List<Catalogo> cercaLibro = archivioLibri.stream().filter(libro -> libro instanceof Libri && Objects.equals(((Libri) libro).getAutore(), autore)).toList();
             System.out.println("Questo è il libro che stavi cercando " + cercaLibro);
-        } else if (str.equals("Rivista")) {
-            List<Catalogo> cercaRivista = archivioRiv.stream().filter(libro -> libro instanceof Libri && Objects.equals(((Libri) libro).getAutore(), autore)).toList();
-            System.out.println("Questa è la rivista che stavi cercando " + cercaRivista);
+
 
         } else System.out.println("Non hai trovato nulla...");
     }
