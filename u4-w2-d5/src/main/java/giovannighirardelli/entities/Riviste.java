@@ -29,4 +29,6 @@ public class Riviste extends Catalogo {
                 ", numPage=" + numPage +
                 '}';
     }
+
+    
 }

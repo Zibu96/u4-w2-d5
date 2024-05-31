@@ -1,12 +1,14 @@
 package giovannighirardelli.entities;
 
+import java.util.List;
 import java.util.Random;
 
-abstract public class Catalogo {
+public class Catalogo {
     protected Long codiceISBN;
     protected String titolo;
     protected Integer annoPubbl;
     protected Integer numPage;
+    protected List<Catalogo> catalogoList;
 
     public Catalogo(String titolo, Integer annoPubbl, Integer numPage) {
         Random random = new Random();
@@ -14,7 +16,9 @@ abstract public class Catalogo {
         this.titolo = titolo;
         this.annoPubbl = annoPubbl;
         this.numPage = numPage;
+
     }
+
 
     public Long getCodiceISBN() {
         return codiceISBN;

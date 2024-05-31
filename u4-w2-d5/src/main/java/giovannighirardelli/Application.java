@@ -1,6 +1,7 @@
 package giovannighirardelli;
 
 import com.github.javafaker.Faker;
+import giovannighirardelli.entities.Archivio;
 import giovannighirardelli.entities.Libri;
 import giovannighirardelli.entities.Riviste;
 import giovannighirardelli.enums.Periodicità;
@@ -14,7 +15,7 @@ public class Application {
 
     public static void main(String[] args) {
 
-
+        Archivio archivio = new Archivio();
 //        Creazione Catalogo
 
         Supplier<String> randomTitolo = () -> {
@@ -47,6 +48,7 @@ public class Application {
         List<Libri> libriList = new ArrayList<>();
         for (int i = 0; i < 20; i++) {
             libriList.add(libriSupplier.get());
+            archivio.aggElemento("Libro", libriSupplier.get());
         }
         System.out.println(libriList);
 
@@ -64,11 +66,20 @@ public class Application {
         List<Riviste> rivisteList = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             rivisteList.add(rivisteSupplier.get());
+            archivio.aggElemento("Rivista", rivisteSupplier.get());
 
         }
 
         System.out.println(rivisteList);
+        Libri libro1 = new Libri("Prova", 1996, 764, "Gianni", "Horror");
+        archivio.aggElemento("Libro", libro1);
+        archivio.cercaPerISBN("Libro", libro1.getCodiceISBN());
+        archivio.cercaPerAnno("Libro", libro1.getAnnoPubbl());
+        archivio.cercaPerAutore("Libro", libro1.getAutore());
 
 
+        archivio.elElemento("Libro", libro1.getCodiceISBN());
+
+        System.out.println(archivio);
     }
 }
